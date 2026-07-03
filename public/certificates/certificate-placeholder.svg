@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Certificate preview placeholder</title>
+  <desc id="desc">A futuristic certificate placeholder for credentials with external verification pages.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset=".52" stop-color="#1f1237"/>
+      <stop offset="1" stop-color="#082f49"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a855f7"/>
+      <stop offset=".55" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="34" fill="url(#bg)"/>
+  <rect x="48" y="48" width="1104" height="704" rx="26" fill="none" stroke="url(#line)" stroke-width="4" opacity=".8"/>
+  <path d="M140 202h920M140 598h920" stroke="#94a3b8" stroke-opacity=".22"/>
+  <circle cx="600" cy="372" r="96" fill="#a855f7" opacity=".18"/>
+  <path d="M562 372l28 28 56-66" fill="none" stroke="#22d3ee" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="510" text-anchor="middle" fill="#f8fafc" font-family="Arial, sans-serif" font-size="54" font-weight="800">Verified Credential</text>
+  <text x="600" y="568" text-anchor="middle" fill="#94a3b8" font-family="Consolas, monospace" font-size="28" font-weight="700">External certificate preview</text>
+</svg>
