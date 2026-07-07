@@ -284,7 +284,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <section id={id} className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -318,7 +318,7 @@ function ProfilePhotoFrame({ compact = false }: { compact?: boolean }) {
       animate={{ y: compact ? 0 : [0, -12, 0] }}
       transition={compact ? undefined : { duration: 5.2, ease: "easeInOut", repeat: Infinity }}
       whileHover={{ rotateX: compact ? 0 : 5, rotateY: compact ? 0 : -7, scale: compact ? 1.04 : 1.025 }}
-      className={`neon-border group relative mx-auto ${compact ? "h-28 w-28" : "w-[min(20rem,84vw)] sm:w-[17.5rem] lg:w-[22rem]"} rounded-2xl p-2`}
+      className={`neon-border group relative mx-auto ${compact ? "h-28 w-28" : "w-[min(18rem,88vw)] sm:w-[17.5rem] lg:w-[22rem]"} rounded-2xl p-2`}
       style={{ transformStyle: "preserve-3d" }}
     >
       <div className={`glass relative overflow-hidden ${compact ? "h-full w-full rounded-full p-1" : "rounded-xl p-4"}`}>
@@ -327,7 +327,7 @@ function ProfilePhotoFrame({ compact = false }: { compact?: boolean }) {
             src={imageSrc}
             alt={PROFILE_IMAGE_ALT}
             fill
-            sizes={compact ? "112px" : "(max-width: 640px) 220px, (max-width: 1024px) 280px, 360px"}
+            sizes={compact ? "112px" : "(max-width: 640px) 288px, (max-width: 1024px) 280px, 360px"}
             className={compact ? "object-cover object-[center_38%]" : "object-cover object-center"}
             loading="lazy"
             quality={100}
@@ -342,7 +342,7 @@ function ProfilePhotoFrame({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function CyberQuote() {
+function CyberQuote({ compact = false }: { compact?: boolean }) {
   const [quoteIndex, setQuoteIndex] = useState(0);
 
   useEffect(() => {
@@ -360,7 +360,13 @@ function CyberQuote() {
   }, []);
 
   return (
-    <div className="absolute right-0 top-3 z-10 max-w-[19rem] text-left text-[var(--text)] sm:right-2 lg:right-0">
+    <div
+      className={
+        compact
+          ? "relative z-10 mx-auto max-w-[18rem] text-center text-[var(--text)]"
+          : "absolute right-0 top-3 z-10 max-w-[19rem] text-left text-[var(--text)] sm:right-2 lg:right-0"
+      }
+    >
       <AnimatePresence mode="wait">
         <motion.p
           key={quoteIndex}
@@ -368,7 +374,9 @@ function CyberQuote() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
-          className="flex items-start gap-2 text-base leading-6 text-white/90 drop-shadow-[0_0_14px_rgba(168,85,247,0.45)] light:text-slate-800"
+          className={`flex gap-2 text-white/90 drop-shadow-[0_0_14px_rgba(168,85,247,0.45)] light:text-slate-800 ${
+            compact ? "items-center justify-center text-[1.05rem] leading-6" : "items-start text-base leading-6"
+          }`}
           style={{ fontFamily: "Caveat, 'Segoe Print', cursive" }}
         >
           <Sparkles className="mt-1 h-4 w-4 shrink-0 text-neon" aria-hidden="true" />
@@ -487,32 +495,35 @@ function Hero() {
   };
 
   return (
-    <section id="home" className="relative z-10 min-h-screen overflow-hidden px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
+    <section id="home" className="relative z-10 min-h-screen overflow-hidden px-4 pt-10 sm:px-6 sm:pt-20 lg:px-8">
       <div className="pointer-events-none absolute inset-0 grid-mask opacity-55" aria-hidden="true" />
-      <div className="mx-auto grid min-h-[calc(100vh-6rem)] max-w-7xl items-center gap-8 pb-12 lg:grid-cols-[0.6fr_0.4fr]">
+      <div className="mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-8 pb-14 sm:min-h-[calc(100vh-5rem)] sm:pb-12 lg:grid-cols-[0.6fr_0.4fr]">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           transition={{ duration: 0.75, ease: "easeOut" }}
-          className="relative z-10 max-w-3xl"
+          className="relative z-10 max-w-3xl text-center sm:text-left"
         >
-          <div className="mb-8 sm:hidden">
+          <div className="mx-auto mb-5 max-w-xs sm:hidden">
             <ProfilePhotoFrame />
           </div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-lg border border-cyan/30 bg-cyan/10 px-4 py-2 font-mono text-xs font-bold uppercase tracking-[0.22em] text-cyan">
+          <div className="mb-5 sm:hidden">
+            <CyberQuote compact />
+          </div>
+          <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-lg border border-cyan/30 bg-cyan/10 px-3 py-2 font-mono text-[0.68rem] font-bold uppercase tracking-[0.18em] text-cyan sm:px-4 sm:text-xs sm:tracking-[0.22em]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             EC-Council Certified SOC Analyst
           </div>
-          <h1 className="text-5xl font-black leading-[0.98] text-[var(--text)] sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2.7rem] font-black leading-[0.98] text-[var(--text)] sm:text-6xl lg:text-7xl">
             <span className="title-gradient">{profile.name}</span>
           </h1>
-          <div className="mt-5 h-10 font-mono text-lg font-bold text-neon sm:text-2xl">
+          <div className="mt-5 flex h-10 justify-center font-mono text-base font-bold text-neon sm:justify-start sm:text-2xl">
             <span className="terminal-line inline-block"> {typed || "\u00a0"}</span>
           </div>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)] sm:text-lg">{HERO_SUMMARY}</p>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[var(--muted)] sm:mx-0 sm:text-lg">{HERO_SUMMARY}</p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-3 sm:justify-start">
             {heroSocials.map((social) => (
               <a
                 key={social.label}
@@ -532,7 +543,7 @@ function Hero() {
             <a
               href="/resume.pdf"
               download
-              className="neon-border inline-flex items-center justify-center gap-2 rounded-lg bg-neon px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-glow transition hover:-translate-y-0.5 sm:whitespace-nowrap"
+              className="neon-border inline-flex w-full items-center justify-center gap-2 rounded-lg bg-neon px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-glow transition hover:-translate-y-0.5 sm:w-auto sm:whitespace-nowrap"
             >
               <Download className="h-5 w-5" aria-hidden="true" />
               Download Resume
@@ -540,7 +551,7 @@ function Hero() {
             <a
               href="#projects"
               onClick={(event) => scrollToSection(event, "projects")}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/[0.15] bg-white/[0.06] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[var(--text)] transition hover:border-cyan/50 hover:text-cyan sm:whitespace-nowrap"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/[0.15] bg-white/[0.06] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[var(--text)] transition hover:border-cyan/50 hover:text-cyan sm:w-auto sm:whitespace-nowrap"
             >
               <Github className="h-5 w-5" aria-hidden="true" />
               View Projects
@@ -548,16 +559,16 @@ function Hero() {
             <a
               href="#contact"
               onClick={(event) => scrollToSection(event, "contact")}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/[0.15] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[var(--text)] transition hover:border-neon/50 hover:text-neon sm:whitespace-nowrap"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/[0.15] px-5 py-3 text-sm font-black uppercase tracking-[0.14em] text-[var(--text)] transition hover:border-neon/50 hover:text-neon sm:w-auto sm:whitespace-nowrap"
             >
               <Mail className="h-5 w-5" aria-hidden="true" />
               Contact Me
             </a>
           </div>
 
-          <div className="mt-7 grid max-w-2xl gap-3 sm:grid-cols-3">
+          <div className="mx-auto mt-7 grid max-w-2xl gap-3 sm:mx-0 sm:grid-cols-3">
             {focusAreas.map((item) => (
-              <div key={item.label} className="glass rounded-lg px-4 py-4">
+              <div key={item.label} className="glass rounded-lg px-4 py-4 text-center sm:text-left">
                 <p className="text-sm font-black text-[var(--text)]">{item.label}</p>
                 <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-cyan">{item.detail}</p>
               </div>
@@ -759,7 +770,7 @@ function TimelineSection() {
                 </span>
               ))}
             </div>
-            <div className="mt-6 max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-96 group-hover:opacity-100">
+            <div className="mt-6 opacity-100 md:max-h-0 md:overflow-hidden md:opacity-0 md:transition-all md:duration-500 md:group-hover:max-h-96 md:group-hover:opacity-100">
               <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-cyan">Responsibilities</p>
               <ul className="mt-3 grid gap-3">
                 {item.items.map((entry) => (
@@ -1336,7 +1347,8 @@ function ContactSection() {
     event.preventDefault();
     if (isSending) return;
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const subject = String(formData.get("subject") || "").trim();
@@ -1408,21 +1420,34 @@ function ContactSection() {
           }
         })
       });
+      const responseText = await response.text().catch(() => "");
 
       if (!response.ok) {
-        throw new Error("EmailJS request failed");
+        throw new Error(`EmailJS request failed: ${response.status} ${responseText}`);
       }
-
-      localStorage.setItem("contactSubmissionTimes", JSON.stringify([...activeWindow, now]));
-      event.currentTarget.reset();
-      setCaptchaToken("");
-      (window as unknown as { hcaptcha?: { reset: () => void } }).hcaptcha?.reset();
-      setStatus({ type: "success", message: "✅ Message sent successfully. I'll get back to you soon." });
     } catch {
-      setStatus({ type: "error", message: "Something went wrong.\nPlease try again later." });
+      setStatus({ type: "error", message: "❌ Something went wrong.\nPlease try again later." });
+      return;
     } finally {
       setIsSending(false);
     }
+
+    try {
+      localStorage.setItem("contactSubmissionTimes", JSON.stringify([...activeWindow, now]));
+    } catch {
+      // Ignore storage issues after EmailJS has already accepted the message.
+    }
+
+    form.reset();
+    setCaptchaToken("");
+
+    try {
+      (window as unknown as { hcaptcha?: { reset: () => void } }).hcaptcha?.reset();
+    } catch {
+      // Ignore captcha reset issues after a successful send.
+    }
+
+    setStatus({ type: "success", message: "✅ Message sent successfully. I'll get back to you soon." });
   };
 
   return (
@@ -1520,7 +1545,6 @@ function ContactSection() {
               }`}
               role="status"
             >
-              {status.type === "success" ? "✓ " : "✕ "}
               {status.message}
             </motion.div>
           ) : null}
