@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100" role="img" aria-labelledby="title desc">
   <title id="title">Khubaib PP profile visual</title>
-  <desc id="desc">A futuristic professional profile placeholder with Khubaib PP initials.</desc>
+  <desc id="desc">A futuristic professional profile placeholder with a fingerprint-inspired Khubaib PP brand mark.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#111827"/>
@@ -27,6 +27,14 @@
   <path d="M197 935c21-153 91-267 191-307 31 30 69 46 113 46 42 0 79-15 109-43 90 45 154 155 175 304" fill="#09090B" opacity=".45" filter="url(#blur)"/>
   <path d="M162 185h116v-38h-78v-74h-38v112Zm460 0h116V73h-38v74h-78v38Z" fill="#22D3EE" opacity=".75"/>
   <path d="M162 915h38v74h78v38H162V915Zm538 74v-74h38v112H622v-38h78Z" fill="#A855F7" opacity=".8"/>
-  <text x="450" y="563" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="98" font-weight="800" text-anchor="middle" letter-spacing="3">KP</text>
+  <g transform="translate(450 555)" fill="none" stroke="#0F172A" stroke-width="10" stroke-linecap="round" opacity=".9">
+    <path d="M-46 10c0-48 33-86 78-86 41 0 74 31 74 73"/>
+    <path d="M-72 12c0-64 45-116 106-116 57 0 103 43 103 99"/>
+    <path d="M-18 42c-8-34 10-72 49-72 31 0 51 23 51 52 0 42-18 67-18 100"/>
+    <path d="M16 78c-5-30 18-48 18-77 0-12-9-21-22-21-18 0-31 16-29 38"/>
+    <path d="M-62 80c16 44 54 72 105 72"/>
+    <path d="M-105 48c12 82 74 138 153 138"/>
+    <path d="M92 78c-4 31-2 61 16 91"/>
+  </g>
   <text x="450" y="1012" fill="#F8FAFC" font-family="JetBrains Mono, Consolas, monospace" font-size="34" font-weight="700" text-anchor="middle">CYBERSECURITY</text>
 </svg>

@@ -309,6 +309,26 @@ function IconBadge({ icon: Icon }: { icon: LucideIcon }) {
   );
 }
 
+function FingerprintLogo({
+  className = "h-8 w-8",
+  priority = false
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    <span className={`relative block shrink-0 transition duration-[250ms] hover:scale-[1.05] ${className}`}>
+      <Image
+        src="/favicon.png"
+        alt="Khubaib PP Logo"
+        fill
+        sizes="40px"
+        className="object-contain drop-shadow-[0_0_14px_rgba(168,85,247,0.5)]"
+        priority={priority}
+      />
+    </span>
+  );
+}
 
 function ProfilePhotoFrame({ compact = false }: { compact?: boolean }) {
   const [imageSrc, setImageSrc] = useState(PROFILE_IMAGE_URL);
@@ -321,7 +341,19 @@ function ProfilePhotoFrame({ compact = false }: { compact?: boolean }) {
       className={`neon-border group relative mx-auto ${compact ? "h-28 w-28" : "w-[min(18rem,88vw)] sm:w-[17.5rem] lg:w-[22rem]"} rounded-2xl p-2`}
       style={{ transformStyle: "preserve-3d" }}
     >
-      <div className={`glass relative overflow-hidden ${compact ? "h-full w-full rounded-full p-1" : "rounded-xl p-4"}`}>
+      {!compact ? (
+        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center" aria-hidden="true">
+          <Image
+            src="/favicon.png"
+            alt=""
+            width={540}
+            height={540}
+            sizes="(max-width: 640px) 420px, (max-width: 1024px) 480px, 540px"
+            className="w-[min(34rem,118vw)] max-w-none object-contain opacity-[0.075] blur-[1px] drop-shadow-[0_0_42px_rgba(168,85,247,0.65)]"
+          />
+        </div>
+      ) : null}
+      <div className={`glass relative z-10 overflow-hidden ${compact ? "h-full w-full rounded-full p-1" : "rounded-xl p-4"}`}>
         <div className={`relative overflow-hidden border border-white/10 bg-panel shadow-2xl transition duration-300 group-hover:shadow-glow ${compact ? "h-full w-full rounded-full" : "aspect-[4/5] rounded-lg"}`}>
           <Image
             src={imageSrc}
@@ -417,9 +449,7 @@ function Navigation({
       </a>
       <nav className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Primary">
         <a href="#home" className="group flex items-center gap-3" aria-label="Khubaib PP home">
-          <span className="grid h-10 w-10 place-items-center rounded-lg border border-neon/40 bg-neon/10 font-black text-neon shadow-glow">
-            KP
-          </span>
+          <FingerprintLogo className="h-[30px] w-[30px] sm:h-9 sm:w-9" priority />
           <span className="hidden text-sm font-black uppercase tracking-[0.22em] text-[var(--text)] sm:inline">Khubaib PP</span>
         </a>
 
@@ -1558,9 +1588,13 @@ function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p className="text-lg font-black text-[var(--text)]">&copy; 2026 Khubaib PP</p>
-          <p className="mt-2 text-sm text-[var(--muted)]">Built with passion for Cybersecurity.</p>
+        <div className="flex items-center gap-4">
+          <FingerprintLogo className="h-8 w-8" />
+          <div>
+            <p className="text-lg font-black text-[var(--text)]">Khubaib PP</p>
+            <p className="mt-1 text-sm font-bold text-[var(--muted)]">Aspiring Cybersecurity Professional</p>
+            <p className="mt-1 text-xs text-[var(--muted)]">&copy; 2026 Khubaib PP</p>
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           {navItems.slice(0, 6).map((item) => (
@@ -1600,7 +1634,15 @@ function LoadingOverlay() {
       className="fixed inset-0 z-[80] grid place-items-center bg-void"
     >
       <div className="w-[min(30rem,calc(100vw-2rem))] rounded-xl border border-neon/30 bg-panel/80 p-6 shadow-glow">
-        <div className="mb-4 flex items-center gap-3 text-cyan">
+        <div className="mb-5 flex justify-center">
+          <motion.div
+            animate={{ scale: [1, 1.08, 1], opacity: [0.82, 1, 0.82] }}
+            transition={{ duration: 1.6, ease: "easeInOut", repeat: Infinity }}
+          >
+            <FingerprintLogo className="h-16 w-16" priority />
+          </motion.div>
+        </div>
+        <div className="mb-4 flex items-center justify-center gap-3 text-cyan">
           <Zap className="h-5 w-5" aria-hidden="true" />
           <span className="font-mono text-xs font-bold uppercase tracking-[0.24em]">Initializing Portfolio</span>
         </div>
