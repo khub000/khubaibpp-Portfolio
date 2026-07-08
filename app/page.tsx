@@ -59,7 +59,9 @@ type Repo = {
 
 const PROFILE_IMAGE_URL = "/profile.png";
 const PROFILE_IMAGE_ALT = "Khubaib PP - Cybersecurity Professional and Security Researcher";
-const HERO_SUMMARY = "Dedicated and motivated aspiring cybersecurity professional with a Bachelor's degree in Computer Applications (BCA), an add-on specialization in Ethical Hacking and Cybersecurity, and the EC-Council Certified SOC Analyst (CSA) certification. Passionate about cybersecurity and eager to begin my career by applying my technical knowledge, contributing to organizational security, and continuously developing my skills in a professional environment.";
+const HERO_SUMMARY_PREFIX = "BCA Graduate and ";
+const HERO_SUMMARY_ACCENT = "EC-Council Certified SOC Analyst (CSA)";
+const HERO_SUMMARY_SUFFIX = " with a strong foundation in penetration testing, SOC operations, SIEM, and threat detection. Passionate about identifying vulnerabilities, strengthening security posture, and protecting organizations from evolving cyber threats through continuous learning and hands-on experience.";
 const CYBER_QUOTES = [
   "Security is not a product, it's a process.",
   "Every alert is a story waiting to be understood.",
@@ -551,7 +553,11 @@ function Hero() {
           <div className="mt-5 flex h-10 justify-center font-mono text-base font-bold text-neon sm:justify-start sm:text-2xl">
             <span className="terminal-line inline-block"> {typed || "\u00a0"}</span>
           </div>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[var(--muted)] sm:mx-0 sm:text-lg">{HERO_SUMMARY}</p>
+          <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-[var(--muted)] sm:mx-0 sm:text-lg sm:leading-8">
+            {HERO_SUMMARY_PREFIX}
+            <span className="font-semibold text-neon">{HERO_SUMMARY_ACCENT}</span>
+            {HERO_SUMMARY_SUFFIX}
+          </p>
 
           <div className="mt-6 flex flex-wrap justify-center gap-3 sm:justify-start">
             {heroSocials.map((social) => (

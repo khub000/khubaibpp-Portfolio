@@ -521,6 +521,24 @@ export const projects = [
     href: "https://github.com/khub000/SafeLine-WAF-Home-Lab",
     cta: "GitHub Repository",
     icon: Radar
+  },
+  {
+    title: "Splunk SIEM SOC Lab - Incident Detection & Threat Hunting",
+    description:
+      "Built a Security Operations Center (SOC) lab using Splunk Enterprise for centralized log collection, threat detection, and incident investigation. Simulated brute-force, ransomware, SQL injection, XSS, Broken Access Control, and Remote Code Execution (RCE) attacks with custom SPL queries for real-time detection and threat hunting.",
+    features: [
+      "Centralized Log Collection",
+      "Incident Investigation",
+      "Brute-Force Detection",
+      "Ransomware Simulation",
+      "SQL Injection Detection",
+      "XSS Detection",
+      "RCE Threat Hunting"
+    ],
+    technologies: ["Splunk Enterprise", "SPL", "Windows Security Logs", "IIS Logs", "SIEM", "Threat Hunting"],
+    href: "https://github.com/khub000/Splunk-SIEM-SOC-Lab",
+    cta: "GitHub Repository",
+    icon: Siren
   }
 ];
 
