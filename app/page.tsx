@@ -59,7 +59,7 @@ type Repo = {
 
 const PROFILE_IMAGE_URL = "/profile.png";
 const PROFILE_IMAGE_ALT = "Khubaib PP - Cybersecurity Professional and Security Researcher";
-const HERO_SUMMARY_PREFIX = "BCA Graduate and ";
+const HERO_SUMMARY_QUALIFICATION = "BCA Graduate";
 const HERO_SUMMARY_ACCENT = "EC-Council Certified SOC Analyst (CSA)";
 const HERO_SUMMARY_SUFFIX = " with a strong foundation in penetration testing, SOC operations, SIEM, and threat detection. Passionate about identifying vulnerabilities, strengthening security posture, and protecting organizations from evolving cyber threats through continuous learning and hands-on experience.";
 const CYBER_QUOTES = [
@@ -554,7 +554,8 @@ function Hero() {
             <span className="terminal-line inline-block"> {typed || "\u00a0"}</span>
           </div>
           <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-[var(--muted)] sm:mx-0 sm:text-lg sm:leading-8">
-            {HERO_SUMMARY_PREFIX}
+            <span className="font-semibold text-neon">{HERO_SUMMARY_QUALIFICATION}</span>
+            {" and "}
             <span className="font-semibold text-neon">{HERO_SUMMARY_ACCENT}</span>
             {HERO_SUMMARY_SUFFIX}
           </p>
